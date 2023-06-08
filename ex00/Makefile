@@ -1,7 +1,19 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: jlimones <jlimones@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/06/08 13:16:05 by jlimones          #+#    #+#              #
+#    Updated: 2023/06/08 15:45:35 by jlimones         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = megaphone
 CC = clang++
 CFLAGS = -Wall -Werror -Wextra -std=c++98
-SRC = 	pruebas.cpp
+SRC = megaphone.cpp
 
 AUTHOR = jlimones
 DATE = 8/06/2023
@@ -38,7 +50,7 @@ endif
 	@printf "%b" "$(OBJ_COLOR)Flags: 	$(WARN_COLOR)$(CFLAGS)\n\033[m"
 
 $(NAME): ${OBJ}
-	@$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
 	@printf "%b" "$(OK_COLOR)" $(NAME)" compilado\n"
 
 skiperror:
