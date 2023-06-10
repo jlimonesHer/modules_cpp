@@ -3,15 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   contact.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlimones <jlimones@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jlimones <josec.limones@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 19:11:49 by jlimones          #+#    #+#             */
-/*   Updated: 2023/06/10 08:07:16 by jlimones         ###   ########.fr       */
+/*   Updated: 2023/06/10 14:20:19 by jlimones         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CONTACT_HPP
 #define CONTACT_HPP
+
+#define MAX_LEN 10
 
 #include <iostream>
 #include <cstring>
@@ -22,18 +24,16 @@ private:
     std::string first_name;
     std::string last_name;
     std::string nick_name;
-    int         index;
+    std::string darkest_secret;
+    std::string number;
     
 public:
-    Contact(/* args */);
+    int         index;
+    Contact();
     ~Contact();
+    void add_contact();
+    void display_contact();
+    //void display_phonebook();
 };
 
-Contact::Contact(/* args */)
-{
-}
-
-Contact::~Contact()
-{
-}
 #endif

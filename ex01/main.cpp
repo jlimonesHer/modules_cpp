@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlimones <jlimones@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jlimones <josec.limones@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 20:00:40 by jlimones          #+#    #+#             */
-/*   Updated: 2023/06/10 08:11:39 by jlimones         ###   ########.fr       */
+/*   Updated: 2023/06/10 14:23:24 by jlimones         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,24 @@
 
 int main(void)
 {
-    std::string a;
+    std::string cmd;
+    PhoneBook   phonebook;
+
     while (1)
     {
         std::cout << "To do(ADD, SEARCH, EXIT) -> ";
-        std::getline(std::cin, a);
-        if (!a.compare("ADD"))
-            std::cout << "Has puesto " + a << std::endl;
-        else if (!a.compare("SEARCH"))
-            std::cout << "Has puesto " + a << std::endl;
-        else if (!a.compare("EXIT"))
-            std::cout << "Has puesto " + a << std::endl;
+        std::getline(std::cin, cmd);
+        if (!cmd.compare("ADD"))
+            phonebook.add_contact();
+        else if (!cmd.compare("SEARCH"))
+            phonebook.display_phonebook();
+        else if (!cmd.compare("EXIT"))
+        {
+            std::cout << "See you later!" << std::endl;
+            return (0);
+        }
         else
-            std::cout << "The command '" + a + "' not exist:" << std::endl;
+            std::cout << "The command '" + cmd + "' not exist:" << std::endl;
+        //phonebook.display_contact();
     }
 }

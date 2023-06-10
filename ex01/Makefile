@@ -3,17 +3,19 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jlimones <jlimones@student.42.fr>          +#+  +:+       +#+         #
+#    By: jlimones <josec.limones@gmail.com>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/08 13:16:05 by jlimones          #+#    #+#              #
-#    Updated: 2023/06/09 20:07:22 by jlimones         ###   ########.fr        #
+#    Updated: 2023/06/10 13:41:04 by jlimones         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = phonebook
-CC = clang++
+CPP = clang++
 CFLAGS = -Wall -Werror -Wextra -std=c++98
-SRC = main.cpp
+SRC = 	main.cpp \
+		phonebook.cpp \
+		contact.cpp \
 
 AUTHOR = jlimones
 DATE = 8/06/2023
@@ -28,7 +30,6 @@ NO_COLOR    = \033[m
 OBJ = $(SRC:.cpp=.o)
 
 all: header $(NAME)
-	@rm -rf .files_changed
 
 header:
 	@printf "%b" "$(OK_COLOR)"
@@ -39,31 +40,24 @@ header:
 	@echo "     \___  |./ /___| |  | | (_| |   <  __/"
 	@echo "         |_/\_____/\_|  |_/\__,_|_|\_\___| v2"
 	@echo
-ifneq ($(HASH),)
-	@printf "%b" "$(OBJ_COLOR)Name:	$(WARN_COLOR)$(NAME)@$(HASH)\n"
-else
 	@printf "%b" "$(OBJ_COLOR)Name:	$(WARN_COLOR)$(NAME)\n"
-endif
 	@printf "%b" "$(OBJ_COLOR)Author:	$(WARN_COLOR)$(AUTHOR)\n"
 	@printf "%b" "$(OBJ_COLOR)Date: 	$(WARN_COLOR)$(DATE)\n\033[m"
-	@printf "%b" "$(OBJ_COLOR)CC: 	$(WARN_COLOR)$(CC)\n\033[m"
+	@printf "%b" "$(OBJ_COLOR)CC: 	$(WARN_COLOR)$(CPP)\n\033[m"
 	@printf "%b" "$(OBJ_COLOR)Flags: 	$(WARN_COLOR)$(CFLAGS)\n\033[m"
 
 $(NAME): ${OBJ}
-	@$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
+	@$(CPP) $(CFLAGS) $(OBJ) -o $(NAME)
 	@printf "%b" "$(OK_COLOR)" $(NAME)" compilado\n"
-
-skiperror:
-	@$(CC) -o $(NAME) $(SRC)
 
 clean: header
 	@rm -f $(OBJ)
 	@rm -f $(NAME)
 
 fclean: header clean
-	@printf "%b" "$(OK_COLOR)" "fclean ejecutado correctamente\n"
+	@printf "%b" "fclean ejecutado correctamente\n"
 	
 
 re: fclean all
 
-.PHONY: all lib clean fclean re
+.PHONY: all clean fclean re
