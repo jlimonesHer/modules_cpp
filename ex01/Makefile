@@ -6,14 +6,14 @@
 #    By: jlimones <jlimones@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/08 13:16:05 by jlimones          #+#    #+#              #
-#    Updated: 2023/06/09 18:15:33 by jlimones         ###   ########.fr        #
+#    Updated: 2023/06/09 20:07:22 by jlimones         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = megaphone
+NAME = phonebook
 CC = clang++
 CFLAGS = -Wall -Werror -Wextra -std=c++98
-SRC = megaphone.cpp
+SRC = main.cpp
 
 AUTHOR = jlimones
 DATE = 8/06/2023

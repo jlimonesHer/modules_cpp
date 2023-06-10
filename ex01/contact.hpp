@@ -1,29 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   megaphone.cpp                                      :+:      :+:    :+:   */
+/*   contact.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jlimones <jlimones@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/08 13:15:55 by jlimones          #+#    #+#             */
-/*   Updated: 2023/06/09 19:15:04 by jlimones         ###   ########.fr       */
+/*   Created: 2023/06/09 19:11:49 by jlimones          #+#    #+#             */
+/*   Updated: 2023/06/10 08:07:16 by jlimones         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef CONTACT_HPP
+#define CONTACT_HPP
 
 #include <iostream>
 #include <cstring>
 
-int main(int argc, char **argv)
+class Contact
 {
-    std::string str;
-    int i;
+private:
+    std::string first_name;
+    std::string last_name;
+    std::string nick_name;
+    int         index;
+    
+public:
+    Contact(/* args */);
+    ~Contact();
+};
 
-    if (argv[1])
-    {
-        str = argv[1];
-        for (i = 0; argv[1][i]; i++)
-            str[i] = toupper(argv[1][i]);
-        std::cout << str << std::endl;
-    }
-    return (0);
+Contact::Contact(/* args */)
+{
 }
+
+Contact::~Contact()
+{
+}
+#endif

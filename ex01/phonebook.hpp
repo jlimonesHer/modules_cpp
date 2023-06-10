@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   megaphone.cpp                                      :+:      :+:    :+:   */
+/*   phonebook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jlimones <jlimones@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/08 13:15:55 by jlimones          #+#    #+#             */
-/*   Updated: 2023/06/09 19:15:04 by jlimones         ###   ########.fr       */
+/*   Created: 2023/06/09 18:36:36 by jlimones          #+#    #+#             */
+/*   Updated: 2023/06/10 08:16:06 by jlimones         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef PHONEBOOK_HPP
+#define PHONEBOOK_HPP
+
 #include <iostream>
 #include <cstring>
+#include "contact.hpp"
 
-int main(int argc, char **argv)
+class PhoneBook
 {
-    std::string str;
-    int i;
+private:
+    Contact contac[8];
+public:
+    PhoneBook(/* args */);
+    ~PhoneBook();
+};
 
-    if (argv[1])
-    {
-        str = argv[1];
-        for (i = 0; argv[1][i]; i++)
-            str[i] = toupper(argv[1][i]);
-        std::cout << str << std::endl;
-    }
-    return (0);
-}
+
+#endif
