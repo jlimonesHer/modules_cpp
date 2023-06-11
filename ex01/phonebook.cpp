@@ -6,7 +6,7 @@
 /*   By: jlimones <josec.limones@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 08:22:22 by jlimones          #+#    #+#             */
-/*   Updated: 2023/06/10 14:26:17 by jlimones         ###   ########.fr       */
+/*   Updated: 2023/06/11 09:38:44 by jlimones         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,17 @@ void PhoneBook::add()
 
 void	PhoneBook::add_contact()
 {
-	this->index_last++;
-	this->contact[this->index_last % MAX].add_contact();
-	this->contact[this->index_last % MAX].index = this->index_last;
+    if (index_last < MAX)
+    {
+	    this->index_last++;
+	    this->contact[this->index_last - 1].add_contact();
+	    this->contact[this->index_last - 1].index = this->index_last;
+    }
+    else
+    {
+        this->contact[MAX-1].add_contact();
+	    this->contact[MAX-1].index = this->index_last;
+    }
 }
 
 void PhoneBook::display_contact()
@@ -40,10 +48,19 @@ void PhoneBook::display_contact()
     this->contact[this->index_last % MAX].display_contact();
 }
 
+
 void PhoneBook::display_phonebook()
 {
-    for(int i = 1;i <= index_last;i++)
-        this->contact[i].display_contact();
+    std::string str;
+    int         index_search;
+    
+    std::cout << "insert contac index -> ";
+    std::getline(std::cin, str);
+    index_search = atoi(str.c_str());
+    std::cout << "i_search" << index_search << std::endl;
+    std::cout << "i_last" << index_last << std::endl;
+    if (index_search <= index_last)
+        this->contact[index_search - 1].display_contact();
 }
-
-//TODO display_phonebook muestar la agenda completa
+//TODO comprobar q ningun campo este vacio
+//TODO formateo de mostrar contacto asd | asd | asd | asd (MAX_LEN = 10)

@@ -6,7 +6,7 @@
 /*   By: jlimones <josec.limones@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 18:36:36 by jlimones          #+#    #+#             */
-/*   Updated: 2023/06/10 14:16:09 by jlimones         ###   ########.fr       */
+/*   Updated: 2023/06/11 08:55:30 by jlimones         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include <cstring>
 #include "contact.hpp"
 
-#define MAX 3
+#define MAX 8
 
 class PhoneBook
 {

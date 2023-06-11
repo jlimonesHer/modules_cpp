@@ -6,7 +6,7 @@
 /*   By: jlimones <josec.limones@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 19:11:49 by jlimones          #+#    #+#             */
-/*   Updated: 2023/06/10 14:20:19 by jlimones         ###   ########.fr       */
+/*   Updated: 2023/06/11 09:32:41 by jlimones         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ public:
     int         index;
     Contact();
     ~Contact();
-    void add_contact();
+    int add_contact();
     void display_contact();
     //void display_phonebook();
 };
