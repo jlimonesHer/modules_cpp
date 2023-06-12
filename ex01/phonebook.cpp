@@ -6,7 +6,7 @@
 /*   By: jlimones <josec.limones@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 08:22:22 by jlimones          #+#    #+#             */
-/*   Updated: 2023/06/11 09:38:44 by jlimones         ###   ########.fr       */
+/*   Updated: 2023/06/12 10:58:12 by jlimones         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,39 +28,45 @@ void PhoneBook::add()
 
 void	PhoneBook::add_contact()
 {
+    std::cout <<"index_last = " << index_last << "\n";
     if (index_last < MAX)
     {
-	    this->index_last++;
-	    this->contact[this->index_last - 1].add_contact();
-	    this->contact[this->index_last - 1].index = this->index_last;
+        if (this->contact[this->index_last].add_contact())
+	    {
+            this->contact[this->index_last].index = this->index_last;
+            index_last++;
+        }
     }
     else
     {
         this->contact[MAX-1].add_contact();
-	    this->contact[MAX-1].index = this->index_last;
+	    this->contact[MAX-1].index = 7;
     }
 }
 
-void PhoneBook::display_contact()
+void PhoneBook::display_phonebook_contact()
 {
-    //system("clear");
-    std::cout << this->index_last << std::endl;
-    this->contact[this->index_last % MAX].display_contact();
-}
-
-
-void PhoneBook::display_phonebook()
-{
-    std::string str;
-    int         index_search;
+    std::string  str;
+    unsigned int index_search;
     
-    std::cout << "insert contac index -> ";
-    std::getline(std::cin, str);
-    index_search = atoi(str.c_str());
-    std::cout << "i_search" << index_search << std::endl;
-    std::cout << "i_last" << index_last << std::endl;
-    if (index_search <= index_last)
-        this->contact[index_search - 1].display_contact();
+    if (this->index_last > 0)
+    {
+        display_all();
+        std::cout << "insert contac index -> ";
+        std::getline(std::cin, str);
+        index_search = atoi(str.c_str());
+        if (index_search <= index_last && index_search > 0)
+            this->contact[index_search - 1].display_contact();
+        else
+            std::cout << "contact not available" << std::endl;
+    }
+    else
+       std::cout << "Empty phonebook" << std::endl;
 }
-//TODO comprobar q ningun campo este vacio
-//TODO formateo de mostrar contacto asd | asd | asd | asd (MAX_LEN = 10)
+
+void PhoneBook::display_all()
+{
+    std::cout << "|" << "    id    " << "|" << "first name" << "|" << " last name" << "|" << " nick name" << "|" << std::endl;
+    for (size_t i = 0;i < index_last;i++)
+        contact[i].display_table();
+}

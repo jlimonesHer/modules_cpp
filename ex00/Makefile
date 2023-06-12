@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jlimones <jlimones@student.42.fr>          +#+  +:+       +#+         #
+#    By: jlimones <josec.limones@gmail.com>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/08 13:16:05 by jlimones          #+#    #+#              #
-#    Updated: 2023/06/09 18:15:33 by jlimones         ###   ########.fr        #
+#    Updated: 2023/06/10 13:11:08 by jlimones         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,7 @@ header:
 	@echo "         |_/\_____/\_|  |_/\__,_|_|\_\___| v2"
 	@echo
 ifneq ($(HASH),)
-	@printf "%b" "$(OBJ_COLOR)Name:	$(WARN_COLOR)$(NAME)@$(HASH)\n"
+	@printf "%b" "$(OBJ_COLOR)Name:	$(WARN_COLOR)$(NAME)\n"
 else
 	@printf "%b" "$(OBJ_COLOR)Name:	$(WARN_COLOR)$(NAME)\n"
 endif
@@ -50,7 +50,7 @@ endif
 	@printf "%b" "$(OBJ_COLOR)Flags: 	$(WARN_COLOR)$(CFLAGS)\n\033[m"
 
 $(NAME): ${OBJ}
-	@$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
+	@$(CC) $(CFLAGS) @$(OBJ) -o $(NAME)
 	@printf "%b" "$(OK_COLOR)" $(NAME)" compilado\n"
 
 skiperror:
