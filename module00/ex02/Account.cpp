@@ -1,18 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   account.cpp                                        :+:      :+:    :+:   */
+/*   Account.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jlimones <jlimones@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 10:40:12 by jlimones          #+#    #+#             */
-/*   Updated: 2023/06/13 19:40:15 by jlimones         ###   ########.fr       */
+/*   Updated: 2023/06/14 12:02:32 by jlimones         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Account.hpp"
 #include <iostream>
+#include <chrono>
 #include <iomanip>
+#include <sstream>
 
 int Account::_nbAccounts = 0;
 int Account::_totalAmount = 0;
@@ -77,17 +79,17 @@ Account::Account( void )
 
 void Account::_displayTimestamp( void )
 {
-	time_t	now;
-	tm		*local;
+    std::time_t currentTime = std::time(NULL);
+    std::tm* localTime = std::localtime(&currentTime);
 
-	now = time(0);
-	local = localtime(&now);
-	std::cout << "[" << local->tm_year + 1900;
-    std::cout << std::setfill('0') << std::setw(2) << local->tm_mon + 1;
-    std::cout << std::setfill('0') << std::setw(2) << local->tm_mday << "_";
-    std::cout << std::setfill('0') << std::setw(2) << local->tm_hour;
-    std::cout << std::setfill('0') << std::setw(2) << local->tm_min;
-    std::cout << std::setfill('0') << std::setw(2) << local->tm_sec << "] ";
+    std::cout  << "[" << std::setfill('0')
+       << std::setw(4) << (localTime->tm_year + 1900)
+       << std::setw(2) << (localTime->tm_mon + 1)
+       << std::setw(2) << localTime->tm_mday << "_"
+       << std::setw(2) << localTime->tm_hour
+       << std::setw(2) << localTime->tm_min
+       << std::setw(2) << localTime->tm_sec
+	   << "]";
 }
 
 /* index:0;p_amount:42;deposit:5;amount:47;nb_deposits:1 */
