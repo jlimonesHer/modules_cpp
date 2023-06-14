@@ -5,24 +5,30 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jlimones <jlimones@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/14 16:20:55 by jlimones          #+#    #+#             */
-/*   Updated: 2023/06/14 17:33:57 by jlimones         ###   ########.fr       */
+/*   Created: 2023/06/14 16:59:46 by jlimones          #+#    #+#             */
+/*   Updated: 2023/06/14 18:07:03 by jlimones         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
+#include "HumanA.hpp"
+#include "HumanB.hpp"
 
-int main(void)
+int main()
 {
-    std::string str = "HI THIS IS BRAIN";
-    std::string *stringPTR = &str;
-	std::string &stringREF = str;
-
-    std::cout << "Memory address: " << &str << std::endl;
-    std::cout << "Memory address: " << stringPTR << std::endl;
-    std::cout << "Memory address: " << &stringREF << std::endl << std::endl;
-    std::cout << "variable value: " << str << std::endl;
-    std::cout << "stringPTR pointed value: " << *stringPTR << std::endl;
-    std::cout << "stringREF pointed value: " << stringREF << std::endl << std::endl;
-    return 0;
+{
+Weapon club = Weapon("crude spiked club");
+// HumanA bob("Bob", club);
+// bob.attack();
+// club.setType("some other type of club");
+// bob.attack();
+}
+{
+Weapon club = Weapon("crude spiked club");
+// HumanB jim("Jim");
+// jim.setWeapon(club);
+// jim.attack();
+// club.setType("some other type of club");
+// jim.attack();
+}
+return 0;
 }
