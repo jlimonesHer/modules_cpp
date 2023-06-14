@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   newZombie.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlimones <josec.limones@gmail.com>         +#+  +:+       +#+        */
+/*   By: jlimones <jlimones@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 11:50:29 by jlimones          #+#    #+#             */
-/*   Updated: 2023/06/12 12:21:29 by jlimones         ###   ########.fr       */
+/*   Updated: 2023/06/14 16:02:49 by jlimones         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "zombie.hpp"
+#include "Zombie.hpp"
 
 Zombie* newZombie( std::string name )
 {

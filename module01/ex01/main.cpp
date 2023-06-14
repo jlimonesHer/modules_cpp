@@ -1,33 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.cpp                                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jlimones <jlimones@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/12 11:49:44 by jlimones          #+#    #+#             */
-/*   Updated: 2023/06/14 16:02:42 by jlimones         ###   ########.fr       */
+/*   Created: 2023/06/14 12:54:31 by jlimones          #+#    #+#             */
+/*   Updated: 2023/06/14 15:52:37 by jlimones         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
-
-Zombie::Zombie()
+void leaks()
 {
+    system("leaks -q Moar_brainz");
 }
 
-Zombie::~Zombie()
+int main()
 {
-    std::cout << _name + "-> detroyed"<< std::endl;
-}
+    atexit(leaks);
+    Zombie *horde;
 
-void Zombie::announce()
-{
-    std::cout << _name + ": BraiiiiiiinnnzzzZ..." << std::endl;
-}
-
-void Zombie::set_name(std::string name)
-{
-    _name = name;
+    horde = zombieHorde(ZOMBIES, "noriante");
+    for ( int i = 0; i < ZOMBIES; i++ )
+        horde[i].announce(horde);
+    delete []horde;
 }

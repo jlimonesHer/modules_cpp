@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   zombie.hpp                                         :+:      :+:    :+:   */
+/*   Zombie.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlimones <josec.limones@gmail.com>         +#+  +:+       +#+        */
+/*   By: jlimones <jlimones@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 11:49:28 by jlimones          #+#    #+#             */
-/*   Updated: 2023/06/12 18:04:01 by jlimones         ###   ########.fr       */
+/*   Updated: 2023/06/14 16:01:20 by jlimones         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 class Zombie
 {
 private:
-    std::string name;
+    std::string _name;
 public:
     Zombie();
     ~Zombie();

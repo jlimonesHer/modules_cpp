@@ -5,18 +5,17 @@
 #                                                     +:+ +:+         +:+      #
 #    By: jlimones <jlimones@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/06/08 13:16:05 by jlimones          #+#    #+#              #
-#    Updated: 2023/06/14 16:01:39 by jlimones         ###   ########.fr        #
+#    Created: 2023/06/14 12:53:28 by jlimones          #+#    #+#              #
+#    Updated: 2023/06/14 15:14:50 by jlimones         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = brainz
+NAME = Moar_brainz
 CC = clang++
 CFLAGS = -Wall -Werror -Wextra -std=c++98
 SRC =   main.cpp \
 		Zombie.cpp \
-		randomChump.cpp \
-		newZombie.cpp \
+		zombieHorde.cpp \
 
 AUTHOR = jlimones
 DATE = 8/06/2023

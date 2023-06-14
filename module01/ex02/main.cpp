@@ -5,26 +5,24 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jlimones <jlimones@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/12 11:49:05 by jlimones          #+#    #+#             */
-/*   Updated: 2023/06/14 16:03:34 by jlimones         ###   ########.fr       */
+/*   Created: 2023/06/14 16:20:55 by jlimones          #+#    #+#             */
+/*   Updated: 2023/06/14 16:46:54 by jlimones         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
-
-void leaks()
-{
-    system("leaks -q brainz");
-}
+#include <iostream>
 
 int main(void)
 {
-    atexit(leaks);
-    Zombie *zombie_ptr;
-    
-    zombie_ptr = newZombie("Limones");
-    zombie_ptr->announce();
-    randomChump("Hernandez");
-    delete zombie_ptr;
+    std::string str = "HI THIS IS BRAIN";
+    std::string *stringPTR = &str;
+	std::string &stringREF = str;
+
+    std::cout << "Memory address: " << &str << std::endl;
+    std::cout << "Memory address: " << &(*stringPTR) << std::endl;
+    std::cout << "Memory address: " << &stringREF << std::endl << std::endl;
+    std::cout << "variable value: " << str << std::endl;
+    std::cout << "stringPTR pointed value: " << *stringPTR << std::endl;
+    std::cout << "stringREF pointed value: " << stringREF << std::endl << std::endl;
     return 0;
 }

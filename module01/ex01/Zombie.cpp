@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jlimones <jlimones@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/12 11:49:44 by jlimones          #+#    #+#             */
-/*   Updated: 2023/06/14 16:02:42 by jlimones         ###   ########.fr       */
+/*   Created: 2023/06/14 12:55:36 by jlimones          #+#    #+#             */
+/*   Updated: 2023/06/14 15:51:06 by jlimones         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,14 @@ Zombie::Zombie()
 {
 }
 
+Zombie::Zombie(std::string name): name(name) {}
+
 Zombie::~Zombie()
 {
-    std::cout << _name + "-> detroyed"<< std::endl;
+    std::cout << this->name + ": detroyed"<< std::endl;
 }
 
-void Zombie::announce()
+void Zombie::announce(Zombie *horde)
 {
-    std::cout << _name + ": BraiiiiiiinnnzzzZ..." << std::endl;
-}
-
-void Zombie::set_name(std::string name)
-{
-    _name = name;
+    std::cout << this->name + ": BraiiiiiiinnnzzzZ..." << std::endl;
 }

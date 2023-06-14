@@ -5,18 +5,16 @@
 #                                                     +:+ +:+         +:+      #
 #    By: jlimones <jlimones@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/06/08 13:16:05 by jlimones          #+#    #+#              #
-#    Updated: 2023/06/14 16:01:39 by jlimones         ###   ########.fr        #
+#    Created: 2023/06/14 16:19:41 by jlimones          #+#    #+#              #
+#    Updated: 2023/06/14 16:20:41 by jlimones         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = brainz
+
+NAME = HI_THIS_IS_BRAIN
 CC = clang++
 CFLAGS = -Wall -Werror -Wextra -std=c++98
-SRC =   main.cpp \
-		Zombie.cpp \
-		randomChump.cpp \
-		newZombie.cpp \
+SRC =   main.cpp 
 
 AUTHOR = jlimones
 DATE = 8/06/2023
