@@ -6,7 +6,7 @@
 /*   By: jlimones <jlimones@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 17:01:15 by jlimones          #+#    #+#             */
-/*   Updated: 2023/06/14 18:15:33 by jlimones         ###   ########.fr       */
+/*   Updated: 2023/06/15 16:11:01 by jlimones         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,13 @@
 class HumanB
 {
 private:
-    Weapon      gun;
-    std::string name;
+    Weapon      *_weapon;
+    std::string _name;
 public:
-    HumanB();
+    HumanB( std::string name );
     ~HumanB();
+    void attack();
+    void setWeapon(Weapon &weapon);
 };
 
 #endif
