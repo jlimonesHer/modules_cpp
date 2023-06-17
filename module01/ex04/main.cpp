@@ -3,35 +3,64 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlimones <jlimones@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jlimones <josec.limones@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 16:34:24 by jlimones          #+#    #+#             */
-/*   Updated: 2023/06/15 18:09:16 by jlimones         ###   ########.fr       */
+/*   Updated: 2023/06/17 09:44:35 by jlimones         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <fstream>
+#include <string>
 
-int main(int argc, char **argv)
-{
-    std::string s1 = "ffff";
-    std::string s2 = "pppp";
-    std::string input;
-    std::ifstream myfile;
-    std::ofstream foutput;
-    myfile.open("aaaaa.txt");
-    foutput.open("bbbbb.txt");
-    while (std::getline(myfile, input)) {
-        std::string line;
-        size_t start = 0;
-        size_t p = input.find(s1);
-        if (p != std::string::npos) {
-            input = input.substr(0, p) + s2 + input.substr(p + s1.size());
-        }
-        foutput << input << "\n";
+#include <iostream>
+#include <fstream>
+#include <string>
+
+void replaceAllOccurrences(std::string& content, const std::string& s1, const std::string& s2) {
+    size_t pos = 0;
+    while ((pos = content.find(s1, pos)) != std::string::npos) {
+        content = content.substr(0, pos) + s2 + content.substr(pos + s1.length());
+        pos += s2.length();
     }
-    myfile.close();
-    foutput.close();
+}
+
+int main(int argc, char* argv[]) {
+    if (argc != 4) {
+        std::cout << "Usage: program <filename> <s1> <s2>" << std::endl;
+        return 1;
+    }
+
+    std::string filename = argv[1];
+    std::string s1 = argv[2];
+    std::string s2 = argv[3];
+
+    std::ifstream inputFile(filename.c_str());
+    if (!inputFile) {
+        std::cout << "Failed to open input file." << std::endl;
+        return 1;
+    }
+
+    std::ofstream outputFile((filename + ".replace").c_str());
+    if (!outputFile) {
+        std::cout << "Failed to create output file." << std::endl;
+        return 1;
+    }
+
+    std::string line;
+    while (std::getline(inputFile, line)) {
+        replaceAllOccurrences(line, s1, s2);
+        outputFile << line << std::endl;
+    }
+
+    std::cout << "Replacement completed. Generated file: " << filename << ".replace" << std::endl;
+
+    inputFile.close();
+    outputFile.close();
+
     return 0;
 }
+
+
+
