@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   phonebook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlimones <josec.limones@gmail.com>         +#+  +:+       +#+        */
+/*   By: jlimones <jlimones@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 08:22:22 by jlimones          #+#    #+#             */
-/*   Updated: 2023/06/12 10:58:12 by jlimones         ###   ########.fr       */
+/*   Updated: 2023/06/20 12:54:13 by jlimones         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void PhoneBook::add()
 
 void	PhoneBook::add_contact()
 {
-    std::cout <<"index_last = " << index_last << "\n";
     if (index_last < MAX)
     {
         if (this->contact[this->index_last].add_contact())

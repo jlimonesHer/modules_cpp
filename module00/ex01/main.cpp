@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlimones <josec.limones@gmail.com>         +#+  +:+       +#+        */
+/*   By: jlimones <jlimones@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 20:00:40 by jlimones          #+#    #+#             */
-/*   Updated: 2023/06/12 10:38:02 by jlimones         ###   ########.fr       */
+/*   Updated: 2023/06/20 12:55:22 by jlimones         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,5 @@ int main(void)
         }
         else
             std::cout << "The command '" + cmd + "' not exist:" << std::endl;
-        //phonebook.display_contact();
     }
 }
