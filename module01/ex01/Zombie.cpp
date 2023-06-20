@@ -6,7 +6,7 @@
 /*   By: jlimones <jlimones@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 12:55:36 by jlimones          #+#    #+#             */
-/*   Updated: 2023/06/14 15:51:06 by jlimones         ###   ########.fr       */
+/*   Updated: 2023/06/20 16:12:49 by jlimones         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ Zombie::~Zombie()
     std::cout << this->name + ": detroyed"<< std::endl;
 }
 
-void Zombie::announce(Zombie *horde)
+void Zombie::announce()
 {
     std::cout << this->name + ": BraiiiiiiinnnzzzZ..." << std::endl;
 }

@@ -6,13 +6,13 @@
 /*   By: jlimones <jlimones@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 09:24:12 by jlimones          #+#    #+#             */
-/*   Updated: 2023/06/20 10:24:21 by jlimones         ###   ########.fr       */
+/*   Updated: 2023/06/20 16:18:15 by jlimones         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Harl.hpp"
 
-int main(int argc, char const **argv)
+int main(void)
 {
     Harl args;
 

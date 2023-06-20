@@ -6,13 +6,13 @@
 #    By: jlimones <jlimones@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/08 13:16:05 by jlimones          #+#    #+#              #
-#    Updated: 2023/06/20 15:33:01 by jlimones         ###   ########.fr        #
+#    Updated: 2023/06/20 16:03:47 by jlimones         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = megaphone
 CC = clang++
-CFLAGS = -Wall -Werror -Wextra -std=c++98
+CCFLAGS = -Wall -Werror -Wextra -std=c++98
 SRC = megaphone.cpp
 
 AUTHOR = jlimones
@@ -26,6 +26,9 @@ WARN_COLOR  = \033[0;33m
 NO_COLOR    = \033[m
 
 OBJ = $(SRC:.cpp=.o)
+
+%.o: %.cpp
+	${CC} ${CCFLAGS} -c $^ -o $@
 
 all: header $(NAME)
 	@rm -rf .files_changed
@@ -47,10 +50,10 @@ endif
 	@printf "%b" "$(OBJ_COLOR)Author:	$(WARN_COLOR)$(AUTHOR)\n"
 	@printf "%b" "$(OBJ_COLOR)Date: 	$(WARN_COLOR)$(DATE)\n\033[m"
 	@printf "%b" "$(OBJ_COLOR)CC: 	$(WARN_COLOR)$(CC)\n\033[m"
-	@printf "%b" "$(OBJ_COLOR)Flags: 	$(WARN_COLOR)$(CFLAGS)\n\033[m"
+	@printf "%b" "$(OBJ_COLOR)Flags: 	$(WARN_COLOR)$(CCFLAGS)\n\033[m"
 
 $(NAME): ${OBJ}
-	@$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
+	$(CC) $(CCFLAGS) $(OBJ) -o $(NAME)
 	@printf "%b" "$(OK_COLOR)" $(NAME)" compilado\n"
 
 skiperror:

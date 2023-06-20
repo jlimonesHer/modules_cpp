@@ -6,7 +6,7 @@
 #    By: jlimones <jlimones@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/14 16:58:42 by jlimones          #+#    #+#              #
-#    Updated: 2023/06/20 10:53:01 by jlimones         ###   ########.fr        #
+#    Updated: 2023/06/20 16:20:15 by jlimones         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,9 @@ WARN_COLOR  = \033[0;33m
 NO_COLOR    = \033[m
 
 OBJ = $(SRC:.cpp=.o)
+
+%.o: %.cpp
+	${CC} ${CFLAGS} -c $^ -o $@
 
 all: header $(NAME)
 	@rm -rf .files_changed
