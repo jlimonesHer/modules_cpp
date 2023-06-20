@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Harl.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlimones <josec.limones@gmail.com>         +#+  +:+       +#+        */
+/*   By: jlimones <jlimones@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 09:24:35 by jlimones          #+#    #+#             */
-/*   Updated: 2023/06/19 10:57:47 by jlimones         ###   ########.fr       */
+/*   Updated: 2023/06/20 10:21:30 by jlimones         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,6 @@ void	Harl::complain(std::string level)
 	};
 	int	key;
 	for (key = 0; levels[key] != level; key++)
-	{
-		if (levels[key] == "")
-		{
-			std::cout << "Level not found\n";
-			return ;
-		}
-	}
+		;
 	(this->*ptrs[key])();
 }

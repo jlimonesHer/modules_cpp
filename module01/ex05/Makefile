@@ -3,18 +3,18 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jlimones <josec.limones@gmail.com>         +#+  +:+       +#+         #
+#    By: jlimones <jlimones@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/14 16:58:42 by jlimones          #+#    #+#              #
-#    Updated: 2023/06/19 11:01:53 by jlimones         ###   ########.fr        #
+#    Updated: 2023/06/20 10:19:24 by jlimones         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = Harld
+NAME = Harl
 CC = clang++
 CFLAGS = -Wall -Werror -Wextra -std=c++98
 SRC =   main.cpp \
-		Harld.cpp
+		Harl.cpp
 
 AUTHOR = jlimones
 DATE = 8/06/2023
