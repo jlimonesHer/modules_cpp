@@ -6,7 +6,7 @@
 /*   By: jlimones <jlimones@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 16:58:15 by jlimones          #+#    #+#             */
-/*   Updated: 2023/06/21 13:09:41 by jlimones         ###   ########.fr       */
+/*   Updated: 2023/06/21 18:25:41 by jlimones         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,23 @@
 #define FIXED_HPP
 
 # include <iostream>
+# include <cmath>
 
 class Fixed
 {
     private:
-        int _valueFixed;
-        static const int _fixed = 8;
+        int _valuePointer;
+        static const int _fracBits = 8;
     public:
         Fixed();
         ~Fixed();
+        Fixed(const int valueFixed);
+        Fixed(const float valueFloat);
         Fixed(Fixed const &copy);
-        Fixed	&operator=(Fixed const &copy);
 
+        Fixed	&operator=(Fixed const &copy);
+        float toFloat(void) const;
+        float toInt(void) const;
         int getRawBits(void)  const;
         void setRawBits(int const raw);
 };

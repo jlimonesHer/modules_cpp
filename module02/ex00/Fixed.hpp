@@ -6,7 +6,7 @@
 /*   By: jlimones <jlimones@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 16:58:15 by jlimones          #+#    #+#             */
-/*   Updated: 2023/06/21 13:09:41 by jlimones         ###   ########.fr       */
+/*   Updated: 2023/06/21 15:30:03 by jlimones         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 class Fixed
 {
     private:
-        int _valueFixed;
-        static const int _fixed = 8;
+        int _valuePointer;
+        static const int _fracBits = 8;
     public:
         Fixed();
         ~Fixed();
