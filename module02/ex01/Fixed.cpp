@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlimones <jlimones@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jlimones <josec.limones@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 16:58:42 by jlimones          #+#    #+#             */
-/*   Updated: 2023/06/21 18:31:22 by jlimones         ###   ########.fr       */
+/*   Updated: 2023/06/22 10:44:02 by jlimones         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,4 +68,10 @@ int Fixed::getRawBits(void)  const{
 void Fixed::setRawBits(int const raw){
     std::cout << "setRawBits member function called\n";
 	_valuePointer = raw;
+}
+
+std::ostream &operator<<(std::ostream &out, const Fixed &fx)
+{
+	out << fx.toFloat();
+	return (out);
 }

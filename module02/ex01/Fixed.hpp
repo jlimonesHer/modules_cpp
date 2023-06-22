@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlimones <jlimones@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jlimones <josec.limones@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 16:58:15 by jlimones          #+#    #+#             */
-/*   Updated: 2023/06/21 18:25:41 by jlimones         ###   ########.fr       */
+/*   Updated: 2023/06/22 10:49:43 by jlimones         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,9 @@ class Fixed
         float toInt(void) const;
         int getRawBits(void)  const;
         void setRawBits(int const raw);
+
 };
+
+std::ostream &operator<<(std::ostream &out, const Fixed &fx);
 
 #endif
