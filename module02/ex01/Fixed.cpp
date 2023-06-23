@@ -6,7 +6,7 @@
 /*   By: jlimones <josec.limones@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 16:58:42 by jlimones          #+#    #+#             */
-/*   Updated: 2023/06/22 10:44:02 by jlimones         ###   ########.fr       */
+/*   Updated: 2023/06/23 07:00:10 by jlimones         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,11 @@ Fixed::Fixed(Fixed const &copy)
 
 float Fixed::toFloat(void) const
 {
-    std::cout << "toFloat called\n";
 	return _valuePointer / (1 << _fracBits);
 }
 
 float Fixed::toInt(void) const
 {
-    std::cout << "toInt called\n";
 	return _valuePointer >> _fracBits;
 }
 
