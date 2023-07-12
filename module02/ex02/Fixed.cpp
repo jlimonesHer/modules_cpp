@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlimones <josec.limones@gmail.com>         +#+  +:+       +#+        */
+/*   By: jlimones <jlimones@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 16:58:42 by jlimones          #+#    #+#             */
-/*   Updated: 2023/06/23 08:19:10 by jlimones         ###   ########.fr       */
+/*   Updated: 2023/07/12 17:56:21 by jlimones         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ Fixed::Fixed(Fixed const &copy)
 
 float Fixed::toFloat(void) const
 {
-	return _valuePointer / (1 << _fracBits);
+	return _valuePointer / (float)(1 << _fracBits);
 }
 
 float Fixed::toInt(void) const
@@ -156,9 +156,42 @@ Fixed Fixed::operator/(Fixed const &number)
 
 /* Sobrecarga de operadores de incremento y decremento */
 
-// Fixed Fixed::operator++( int )
-// {
-//     Fixed a = *this;
-//     a.setRawBits(number.getRawBits() + number.getRawBits());
-//     return (a);
-// }
+Fixed Fixed::operator++( int )
+{
+    Fixed tmp = *this;
+    this->_valuePointer++;
+    return tmp;
+}
+
+Fixed Fixed::operator++ ( void )
+{
+    this->_valuePointer++;
+    return (*this);
+}
+
+Fixed Fixed::operator--( int )
+{
+    Fixed tmp = *this;
+    this->_valuePointer--;
+    return tmp;
+}
+
+Fixed Fixed::operator--( void )
+{
+    this->_valuePointer--;
+    return (*this);
+}
+
+Fixed Fixed::min(Fixed const a, Fixed const b)
+{
+    if (a < b)
+        return a;
+    return b;
+}
+
+Fixed Fixed::max(Fixed const a, Fixed const b)
+{
+    if (a > b)
+        return a;
+    return b;
+}
