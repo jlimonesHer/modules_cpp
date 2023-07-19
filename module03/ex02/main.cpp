@@ -6,22 +6,21 @@
 /*   By: jlimones <josec.limones@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 09:35:29 by jlimones          #+#    #+#             */
-/*   Updated: 2023/07/19 09:31:22 by jlimones         ###   ########.fr       */
+/*   Updated: 2023/07/19 18:31:03 by jlimones         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
 
 int main (void) {
-    ClapTrap clap("jlimones");
-
-    /* Attack without damage */
-    clap.attack("Clap");
-    clap.takeDamage(10);
-    /* Attack without damage */
-    clap.attack("Clap");
-    clap.beRepaired(10);
-    /* deplete energy points */
-    for(unsigned int i = 0;i <= 10; i++)
-        clap.attack("clap");
+    ScavTrap jlimones("jlimones");
+    ScavTrap abarriga("abarriga");
+    jlimones.guardGate();
+    for (int i = 1;i <= 50;i++)
+    {
+        jlimones.attack("Target");
+        std::cout << i << std::endl;
+    }
+    jlimones.beRepaired(10);
 }

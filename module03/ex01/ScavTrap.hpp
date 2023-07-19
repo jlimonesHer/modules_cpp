@@ -1,27 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jlimones <josec.limones@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/14 09:35:29 by jlimones          #+#    #+#             */
-/*   Updated: 2023/07/19 09:31:22 by jlimones         ###   ########.fr       */
+/*   Created: 2023/07/19 09:35:13 by jlimones          #+#    #+#             */
+/*   Updated: 2023/07/19 18:20:28 by jlimones         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef SCAVTRAP_HPP
+#define SCAVTRAP_HPP
+
 #include "ClapTrap.hpp"
 
-int main (void) {
-    ClapTrap clap("jlimones");
+class ScavTrap : public ClapTrap
+{
+private:
 
-    /* Attack without damage */
-    clap.attack("Clap");
-    clap.takeDamage(10);
-    /* Attack without damage */
-    clap.attack("Clap");
-    clap.beRepaired(10);
-    /* deplete energy points */
-    for(unsigned int i = 0;i <= 10; i++)
-        clap.attack("clap");
-}
+public:
+    ScavTrap();
+    ScavTrap(std::string name);
+    ScavTrap(ScavTrap const& copy);
+    ~ScavTrap();
+    void guardGate();
+    ScavTrap &operator=(ScavTrap const& copy);
+    void attack(const std::string& target);
+};
+
+
+#endif
