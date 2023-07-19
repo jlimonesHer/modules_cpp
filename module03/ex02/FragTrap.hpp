@@ -1,28 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jlimones <josec.limones@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/14 09:35:29 by jlimones          #+#    #+#             */
-/*   Updated: 2023/07/19 19:03:35 by jlimones         ###   ########.fr       */
+/*   Created: 2023/07/19 18:40:17 by jlimones          #+#    #+#             */
+/*   Updated: 2023/07/19 18:59:17 by jlimones         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
-#include "ScavTrap.hpp"
-#include "FragTrap.hpp"
+#ifndef FRAGTRAP_HPP
+#define FRAGTRAP_HPP
 
-int main (void) {
-    FragTrap jlimones("jlimones");
-    ScavTrap abarriga("abarriga");
-    abarriga.guardGate();
-    for (int i = 1;i <= 50;i++)
-    {
-        jlimones.attack("Target");
-        std::cout << i << std::endl;
-    }
-    jlimones.beRepaired(10);
-    jlimones.highFivesGuys();
-}
+#include "ClapTrap.hpp"
+
+class FragTrap : public ClapTrap
+{
+private:
+    
+public:
+    FragTrap();
+    FragTrap(std::string name);
+    FragTrap(FragTrap const& copy);
+    ~FragTrap();
+    FragTrap &operator=(FragTrap const& copy);
+    void highFivesGuys();
+};
+
+
+
+
+#endif

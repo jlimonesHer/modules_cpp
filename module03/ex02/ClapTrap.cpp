@@ -6,7 +6,7 @@
 /*   By: jlimones <josec.limones@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 09:37:01 by jlimones          #+#    #+#             */
-/*   Updated: 2023/07/19 18:06:15 by jlimones         ###   ########.fr       */
+/*   Updated: 2023/07/19 19:12:11 by jlimones         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ std::string ClapTrap::getName() const {
 void ClapTrap::attack(const std::string& target) {
     if (_energyPoints == 0)
     {
-        std::cout << "Claptrap " <<  _name <<" can't attack, he has no energy points." << std::endl;
+        std::cout << "Claptrap " <<  _name << "\033[0;31m can't attack, he has no energy points.\033[m" << std::endl;
         return;   
     }
     _energyPoints--;
@@ -79,7 +79,7 @@ void ClapTrap::attack(const std::string& target) {
 void ClapTrap::takeDamage(unsigned int amount) {
     if (_energyPoints == 0)
     {
-       std::cout << "Claptrap " <<  _name << " can't take damage, he has no energy points." << std::endl;
+       std::cout << "Claptrap " <<  _name << "\033[0;31m can't take damage, he has no energy points.\033[m" << std::endl;
        return;
     }
     _energyPoints--;
@@ -90,7 +90,7 @@ void ClapTrap::takeDamage(unsigned int amount) {
     void ClapTrap::beRepaired(unsigned int amount) {
          if (_energyPoints == 0)
         {
-        std::cout << "Claptrap " <<  _name << " cannot be repaired, he has no energy points." << std::endl;
+        std::cout << "Claptrap " <<  _name << "\033[0;31m cannot be repaired, he has no energy points.\033[m" << std::endl;
         return;
         }
         _energyPoints--;

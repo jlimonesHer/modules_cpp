@@ -6,7 +6,7 @@
 #    By: jlimones <josec.limones@gmail.com>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/20 16:58:00 by jlimones          #+#    #+#              #
-#    Updated: 2023/07/19 09:57:27 by jlimones         ###   ########.fr        #
+#    Updated: 2023/07/19 18:54:25 by jlimones         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ CC = clang++
 CFLAGS = -Wall -Werror -Wextra -std=c++98
 SRC =   main.cpp \
 		ScavTrap.cpp \
+		FragTrap.cpp \
 		ClapTrap.cpp
 
 AUTHOR = jlimones
