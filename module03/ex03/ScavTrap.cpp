@@ -6,7 +6,7 @@
 /*   By: jlimones <josec.limones@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 09:36:20 by jlimones          #+#    #+#             */
-/*   Updated: 2023/07/19 18:56:40 by jlimones         ###   ########.fr       */
+/*   Updated: 2023/07/21 19:57:05 by jlimones         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 #include "ClapTrap.hpp"
 
 ScavTrap::ScavTrap(): ClapTrap() {
-    std::cout << "ScavTrap constructor called." << std::endl;
+    std::cout << "\033[0;33mScavTrap constructor called.\033[m" << std::endl;
 }
 
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 {
-    std::cout << "ScavTrap constructor called." << std::endl;
-    this->setAttack(20);
-    this->setEnergyPoints(50);
+    std::cout << "\033[0;33mScavTrap constructor called.\033[m" << std::endl;
     this->setHitPoints(100);
+    this->setEnergyPoints(50);
+    this->setAttack(20);
 }
 
 ScavTrap::ScavTrap(ScavTrap const& copy)
@@ -30,7 +30,6 @@ ScavTrap::ScavTrap(ScavTrap const& copy)
 	std::cout << "Copy constructor called" << std::endl;
 	if (this != &copy)
 	{
-        _name = copy.getName();
 		_attackDamage = copy.getAttack();
 		_energyPoints = copy.getEnergyPoints();
 		_hitPoints = copy.getHitPoints();
@@ -46,7 +45,7 @@ ScavTrap &ScavTrap::operator=(const ScavTrap &copy) {
 
 ScavTrap::~ScavTrap()
 {
-    std::cout << "ScavTrap destructor called." << std::endl;
+    std::cout << "\033[0;33mScavTrap Destructor called.\033[m" << std::endl;
 }
 
 void ScavTrap::guardGate() {
@@ -56,7 +55,7 @@ void ScavTrap::guardGate() {
 void ScavTrap::attack(const std::string& target) {
     if (_energyPoints == 0)
     {
-        std::cout << "ScavTrap " <<  _name <<" can't attack, he has no energy points." << std::endl;
+        std::cout << "ScavTrap " <<  _name << "\033[0;31m can't attack, he has no energy points.\033[m" << std::endl;
         return;   
     }
     _energyPoints--;

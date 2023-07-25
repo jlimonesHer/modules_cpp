@@ -6,22 +6,19 @@
 /*   By: jlimones <josec.limones@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 09:35:29 by jlimones          #+#    #+#             */
-/*   Updated: 2023/07/21 17:56:56 by jlimones         ###   ########.fr       */
+/*   Updated: 2023/07/25 18:34:09 by jlimones         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
+#include "FragTrap.hpp"
+#include "DiamondTrap.hpp"
 
 int main (void) {
-    ScavTrap jlimones("jlimones");
-    ScavTrap abarriga("abarriga");
-    std::cout << jlimones.getEnergyPoints() << std::endl;
-    jlimones.guardGate();
-    for (int i = 1;i <= 50;i++)
-    {
-        jlimones.attack("Target");
-        std::cout << i << std::endl;
-    }
-    jlimones.beRepaired(10);
+    DiamondTrap jlimones("jlimones");
+    std::cout << "hitPoints -> " << jlimones.getHitPoints() << std::endl;
+    std::cout << "energyPoints -> " << jlimones.getEnergyPoints() << std::endl;
+    std::cout << "Attack Damage -> " << jlimones.getAttack() << std::endl;
+    jlimones.attack("Target");
+    jlimones.whoAmI();
 }

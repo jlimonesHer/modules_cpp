@@ -1,27 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   DiamondTrap.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jlimones <josec.limones@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/14 09:35:29 by jlimones          #+#    #+#             */
-/*   Updated: 2023/07/21 17:56:56 by jlimones         ###   ########.fr       */
+/*   Created: 2023/07/19 19:21:49 by jlimones          #+#    #+#             */
+/*   Updated: 2023/07/25 18:27:06 by jlimones         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
+#ifndef DIAMONDTRAP_HPP
+#define  DIAMONDTRAP_HPP
+
 #include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
-int main (void) {
-    ScavTrap jlimones("jlimones");
-    ScavTrap abarriga("abarriga");
-    std::cout << jlimones.getEnergyPoints() << std::endl;
-    jlimones.guardGate();
-    for (int i = 1;i <= 50;i++)
-    {
-        jlimones.attack("Target");
-        std::cout << i << std::endl;
-    }
-    jlimones.beRepaired(10);
-}
+class DiamondTrap : public ScavTrap, FragTrap
+{
+protected:
+    std::string     _name;
+public:
+    DiamondTrap( void );
+    ~DiamondTrap( void );
+    DiamondTrap(std::string name);
+    DiamondTrap(DiamondTrap const &copy);
+	DiamondTrap	&operator=(DiamondTrap const &copy);
+    void    attack(const std::string &target);
+	void	whoAmI();
+
+};
+
+
+
+
+#endif

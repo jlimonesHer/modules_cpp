@@ -6,23 +6,24 @@
 /*   By: jlimones <josec.limones@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 09:37:01 by jlimones          #+#    #+#             */
-/*   Updated: 2023/07/20 12:45:53 by jlimones         ###   ########.fr       */
+/*   Updated: 2023/07/21 17:39:02 by jlimones         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
 ClapTrap::ClapTrap(){
+    std::cout << "\033[0;31mClapTrap constructor called \033[m" << std::endl;
 }
 
 ClapTrap::ClapTrap( std::string name ):_hitPoints(10), _energyPoints(10), _attackDamage(0)
 {
     _name = name;
-    std::cout << "ClapTrap constructor called" << _name << std::endl;
+    std::cout << "\033[0;31mClapTrap constructor called \033[m" << std::endl;
 }
 
 ClapTrap::~ClapTrap(){
-    std::cout << "Call Destructor " << this->_name << std::endl;
+    std::cout << "\033[0;31mClapTrap Destructor called \033[m" << std::endl;
 }
 
 ClapTrap &ClapTrap::operator=(ClapTrap const& copy) {
