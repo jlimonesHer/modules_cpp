@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScavTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlimones <josec.limones@gmail.com>         +#+  +:+       +#+        */
+/*   By: jlimones <jlimones@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 09:35:13 by jlimones          #+#    #+#             */
-/*   Updated: 2023/07/21 17:29:54 by jlimones         ###   ########.fr       */
+/*   Updated: 2023/08/04 11:26:05 by jlimones         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,10 @@
 
 class ScavTrap :virtual public ClapTrap
 {
-private:
-
+protected:
+    unsigned int _hitPoints;
+    unsigned int _energyPoints;
+    unsigned int _attackDamage;
 public:
     ScavTrap();
     ScavTrap(std::string name);

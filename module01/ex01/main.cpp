@@ -6,7 +6,7 @@
 /*   By: jlimones <jlimones@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 12:54:31 by jlimones          #+#    #+#             */
-/*   Updated: 2023/06/20 16:13:30 by jlimones         ###   ########.fr       */
+/*   Updated: 2023/08/02 11:43:03 by jlimones         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int main()
     atexit(leaks);
     Zombie *horde;
 
-    horde = zombieHorde(ZOMBIES, "noriante");
+    horde = zombieHorde(ZOMBIES, "Pisciners");
     for ( int i = 0; i < ZOMBIES; i++ )
         horde[i].announce();
     delete []horde;

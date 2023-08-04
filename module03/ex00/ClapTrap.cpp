@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlimones <josec.limones@gmail.com>         +#+  +:+       +#+        */
+/*   By: jlimones <jlimones@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 09:37:01 by jlimones          #+#    #+#             */
-/*   Updated: 2023/07/18 19:32:09 by jlimones         ###   ########.fr       */
+/*   Updated: 2023/08/04 11:39:14 by jlimones         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,17 @@ ClapTrap::~ClapTrap(){
     std::cout << "Call Destructor " << this->_name << std::endl;
 }
 
+ClapTrap::ClapTrap(ClapTrap const &copy) {
+    std::cout << "ClapTrap copy constructor" << std::endl;
+    *this = copy;
+ }
+ 
 ClapTrap &ClapTrap::operator=(ClapTrap const& copy) {
-    _attackDamage = copy.getAttack();
-    _energyPoints = copy.getEnergyPoints();
-    _hitPoints = copy.getHitPoints();
+    if (this != &copy) {
+        _attackDamage = copy.getAttack();
+        _energyPoints = copy.getEnergyPoints();
+        _hitPoints = copy.getHitPoints();
+    }
     return (*this);
 }
 
@@ -62,7 +69,8 @@ unsigned int ClapTrap::getAttack() const {
 void ClapTrap::attack(const std::string& target) {
     if (_energyPoints == 0)
     {
-        std::cout << "Claptrap " <<  _name <<" can't attack, he has no energy points." << std::endl;
+        std::cout << "Claptrap " <<  _name <<" can't attack, he has no energy points to " 
+        << target << std::endl;
         return;   
     }
     _energyPoints--;

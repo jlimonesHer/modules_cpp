@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlimones <josec.limones@gmail.com>         +#+  +:+       +#+        */
+/*   By: jlimones <jlimones@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 09:35:29 by jlimones          #+#    #+#             */
-/*   Updated: 2023/07/25 18:34:09 by jlimones         ###   ########.fr       */
+/*   Updated: 2023/08/04 12:18:24 by jlimones         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,4 +21,9 @@ int main (void) {
     std::cout << "Attack Damage -> " << jlimones.getAttack() << std::endl;
     jlimones.attack("Target");
     jlimones.whoAmI();
+    /**/
+    jlimones.attack("Target");
+	jlimones.whoAmI();
+	jlimones.guardGate();
+	jlimones.highFivesGuys();
 }

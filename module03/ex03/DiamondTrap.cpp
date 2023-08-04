@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   DiamondTrap.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlimones <josec.limones@gmail.com>         +#+  +:+       +#+        */
+/*   By: jlimones <jlimones@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 19:23:50 by jlimones          #+#    #+#             */
-/*   Updated: 2023/07/25 18:38:49 by jlimones         ###   ########.fr       */
+/*   Updated: 2023/08/04 11:50:44 by jlimones         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ DiamondTrap::DiamondTrap(std::string name): ScavTrap(name), FragTrap(name)
 
 DiamondTrap::DiamondTrap(DiamondTrap const &copy) 
 {
-    	std::cout << "Copy constructor called" << std::endl;
+    std::cout << "Copy constructor called" << std::endl;
 	if (this != &copy)
 	{
 		_name = copy.getName();
