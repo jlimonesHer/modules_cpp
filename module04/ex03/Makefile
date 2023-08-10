@@ -6,7 +6,7 @@
 #    By: jlimones <jlimones@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/20 16:58:00 by jlimones          #+#    #+#              #
-#    Updated: 2023/08/04 17:05:02 by jlimones         ###   ########.fr        #
+#    Updated: 2023/08/10 12:37:10 by jlimones         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,9 +14,11 @@ NAME = AMateria
 CC = clang++
 CFLAGS = -Wall -Werror -Wextra -std=c++98
 SRC =   main.cpp \
-		AMateria.cpp \
 		Ice.cpp \
 		Cure.cpp \
+		Character.cpp \
+		AMateria.cpp \
+		MateriaSource.cpp \
 
 AUTHOR = jlimones
 DATE = 8/06/2023

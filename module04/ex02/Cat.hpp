@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlimones <josec.limones@gmail.com>         +#+  +:+       +#+        */
+/*   By: jlimones <jlimones@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 09:14:27 by jlimones          #+#    #+#             */
-/*   Updated: 2023/07/26 20:23:20 by jlimones         ###   ########.fr       */
+/*   Updated: 2023/08/10 19:05:43 by jlimones         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ class Cat: public Animal
         Cat(Cat const &copy);
         Cat	&operator=(Cat const &copy);
         std::string getType( void ) const;
+        void makeSound( void ) const;
 };
 
 #endif

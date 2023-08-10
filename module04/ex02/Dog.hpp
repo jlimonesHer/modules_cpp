@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dog.hpp                                            :+:      :+:    :+:   */
+/*   Dog.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlimones <josec.limones@gmail.com>         +#+  +:+       +#+        */
+/*   By: jlimones <jlimones@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 10:24:46 by jlimones          #+#    #+#             */
-/*   Updated: 2023/07/27 17:54:10 by jlimones         ###   ########.fr       */
+/*   Updated: 2023/08/10 19:06:29 by jlimones         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ class Dog: public Animal
         Dog(Dog const &copy);
         Dog	&operator=(Dog const &copy);
         std::string getType( void ) const;
+        void makeSound( void ) const;
 };
 
 #endif

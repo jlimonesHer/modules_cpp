@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Dog.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlimones <josec.limones@gmail.com>         +#+  +:+       +#+        */
+/*   By: jlimones <jlimones@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 10:09:50 by jlimones          #+#    #+#             */
-/*   Updated: 2023/07/27 18:33:05 by jlimones         ###   ########.fr       */
+/*   Updated: 2023/08/10 19:05:15 by jlimones         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,10 @@ Dog	&Dog::operator=(const Dog &copy)
 std::string Dog::getType() const
 {
     return this->_type;
+}
+
+
+void Dog::makeSound( void ) const
+{
+        std::cout << "Guau, Guau" << std::endl;
 }

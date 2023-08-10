@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Animal.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlimones <josec.limones@gmail.com>         +#+  +:+       +#+        */
+/*   By: jlimones <jlimones@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 09:07:11 by jlimones          #+#    #+#             */
-/*   Updated: 2023/07/29 09:53:09 by jlimones         ###   ########.fr       */
+/*   Updated: 2023/08/10 19:03:11 by jlimones         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,7 @@ std::string Animal::getType() const
     return this->_type;
 }
 
-void Animal::makeSound( void ) const
-{
-    if (_type == "Dog")
-        std::cout << "Guau, Guau" << std::endl;
-    if (_type == "Cat")
-        std::cout << "Miau, Miau" << std::endl;
-}
+
 
 std::string	Animal::getIdeas(int index)
 {

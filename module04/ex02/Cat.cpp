@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Cat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlimones <josec.limones@gmail.com>         +#+  +:+       +#+        */
+/*   By: jlimones <jlimones@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 09:14:46 by jlimones          #+#    #+#             */
-/*   Updated: 2023/07/27 18:32:58 by jlimones         ###   ########.fr       */
+/*   Updated: 2023/08/10 19:03:32 by jlimones         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,9 @@ Cat	&Cat::operator=(const Cat &copy)
 std::string Cat::getType() const
 {
     return this->_type;
+}
+
+void Cat::makeSound( void ) const
+{
+        std::cout << "Miau, Miau" << std::endl;
 }

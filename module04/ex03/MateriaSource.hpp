@@ -1,32 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cure.hpp                                           :+:      :+:    :+:   */
+/*   MateriaSource.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jlimones <jlimones@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/04 16:53:43 by jlimones          #+#    #+#             */
-/*   Updated: 2023/08/10 12:31:46 by jlimones         ###   ########.fr       */
+/*   Created: 2023/08/10 12:05:38 by jlimones          #+#    #+#             */
+/*   Updated: 2023/08/10 12:42:02 by jlimones         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CURE_HPP
-#define CURE_HPP
+#ifndef MATERIASOURCE_HPP
+#define MATERIASOURCE_HPP
 
 # include <iostream>
-#include "AMateria.hpp"
+# include "IMateriaSource.hpp"
 
-class Cure: public AMateria
+class MateriaSource: public IMateriaSource
 {
     private:
-
+        int learnt;
+        AMateria *inventory[MAX_SLOT];
     public:
-        Cure();
-        ~Cure();
-        Cure(Cure const &copy);
-        Cure	&operator=(Cure const &copy);
-        void use(ICharacter& target);
-        AMateria* clone() const;
+        MateriaSource();
+        ~MateriaSource();
+        MateriaSource(MateriaSource const &copy);
+        MateriaSource	&operator=(MateriaSource const &copy);
+        void learnMateria(AMateria*);
+        AMateria* createMateria(std::string const & type);
 };
 
 #endif

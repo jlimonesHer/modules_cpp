@@ -6,7 +6,7 @@
 /*   By: jlimones <jlimones@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 09:07:00 by jlimones          #+#    #+#             */
-/*   Updated: 2023/08/02 13:15:19 by jlimones         ###   ########.fr       */
+/*   Updated: 2023/08/10 19:02:42 by jlimones         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ class Animal
         Animal	&operator=(Animal const &copy);
         virtual ~Animal() = 0;
         std::string getType( void ) const;
-        void makeSound( void )const;
+        virtual void makeSound( void )const = 0;
         std::string getIdeas(int i);
         void setIdeas(int i, std::string newIdea);
 };
