@@ -1,19 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bureaucrat.cpp                                     :+:      :+:    :+:   */
+/*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlimones <josec.limones@gmail.com>         +#+  +:+       +#+        */
+/*   By: jlimones <jlimones@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 12:02:12 by jlimones          #+#    #+#             */
-/*   Updated: 2023/08/19 12:48:30 by jlimones         ###   ########.fr       */
+/*   Updated: 2023/08/19 19:10:05 by jlimones         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat()
+class Bureaucrat::GradeTooHighException : public std::exception {
+    virtual const char *what() const throw() { return "Grade Too High Exception"; }
+};
+
+class Bureaucrat::GradeTooLowException : public std::exception {
+    virtual const char *what() const throw() { return "Grade Too Low Exception"; }
+};
+
+Bureaucrat::Bureaucrat(std::string _name, int _grade): name(_name), grade(_grade)
 {
+    if (_grade > 150) {
+        throw GradeTooLowException();
+    } else if (_grade < 1) {
+        throw GradeTooHighException();
+    }
 }
 
 Bureaucrat::~Bureaucrat()
@@ -25,8 +38,40 @@ Bureaucrat::Bureaucrat(Bureaucrat const &copy)
     *this = copy;
 }
 
-// Bureaucrat	&Bureaucrat::operator=(const Bureaucrat &copy)
-// {
-//     *this = copy;
-//     return(*this);
-// }
+Bureaucrat &Bureaucrat::operator=(const Bureaucrat &copy)
+{
+   grade = copy.getGrade();
+    return(*this);
+}
+
+/*****************/
+std::string Bureaucrat::getName( void ) const {
+    return name;
+}
+int Bureaucrat::getGrade( void ) const {
+    return this->grade;
+}
+
+void Bureaucrat::setgrade(int newGrade) {
+    grade = newGrade;
+}
+
+void Bureaucrat::incrementGrade( void ) {
+    if (grade <= 1)
+        throw GradeTooHighException();
+    else
+        grade--;
+}
+
+void Bureaucrat::decrementGrade( void ) {
+    if (grade >= 150)
+        throw GradeTooLowException();
+    else
+        grade++;
+}
+
+std::ostream &operator<<(std::ostream &os, const Bureaucrat &bureaucrat)
+{
+	os << bureaucrat.getName() << ", bureaucrat grade " << bureaucrat.getGrade() << std::endl;
+	return os;
+}
