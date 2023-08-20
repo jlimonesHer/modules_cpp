@@ -6,7 +6,7 @@
 /*   By: jlimones <jlimones@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 12:02:12 by jlimones          #+#    #+#             */
-/*   Updated: 2023/08/19 19:10:05 by jlimones         ###   ########.fr       */
+/*   Updated: 2023/08/20 10:53:08 by jlimones         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,16 @@ Bureaucrat::Bureaucrat(std::string _name, int _grade): name(_name), grade(_grade
         throw GradeTooLowException();
     } else if (_grade < 1) {
         throw GradeTooHighException();
+    }
+}
+
+void Bureaucrat::signForm(Form& form) {
+    try {
+        form.beSigned(*this);
+        std::cout << this->getName() << " signed " << form.getName() << std::endl;
+    } catch (std::exception& e) {
+        std::cout << this->getName() << " couldn'n sign " 
+        << form.getName() << " because " << e.what() << std::endl;
     }
 }
 

@@ -6,12 +6,12 @@
 #    By: jlimones <jlimones@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/20 16:58:00 by jlimones          #+#    #+#              #
-#    Updated: 2023/08/19 20:22:28 by jlimones         ###   ########.fr        #
+#    Updated: 2023/08/20 09:26:04 by jlimones         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = bureaucrat_form
-CC = clang++
+CC = c++
 CFLAGS = -Wall -Werror -Wextra -std=c++98
 SRC =   main.cpp \
 		Bureaucrat.cpp \
