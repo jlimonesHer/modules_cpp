@@ -6,7 +6,7 @@
 /*   By: jlimones <jlimones@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 11:55:56 by jlimones          #+#    #+#             */
-/*   Updated: 2023/08/21 17:44:41 by jlimones         ###   ########.fr       */
+/*   Updated: 2023/08/21 18:19:54 by jlimones         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 int main()
 {   
-    std::string one = "ONE ONE ONE ONEONE";
+    std::string one = "robotomy reqUest";
     std::string two = "two";
     std::string three = "three";
     

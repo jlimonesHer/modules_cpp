@@ -6,13 +6,13 @@
 #    By: jlimones <jlimones@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/20 16:58:00 by jlimones          #+#    #+#              #
-#    Updated: 2023/08/21 17:45:48 by jlimones         ###   ########.fr        #
+#    Updated: 2023/08/21 18:08:10 by jlimones         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = Intern
 CC = c++
-CFLAGS = -Wall -Werror -Wextra -std=c++98
+#CFLAGS = -Wall -Werror -Wextra -std=c++98
 SRC =   main.cpp \
 		Bureaucrat.cpp \
 		AForm.cpp \
