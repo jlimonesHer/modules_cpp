@@ -6,7 +6,7 @@
 /*   By: jlimones <jlimones@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 16:44:45 by jlimones          #+#    #+#             */
-/*   Updated: 2023/08/21 18:19:32 by jlimones         ###   ########.fr       */
+/*   Updated: 2023/08/21 18:57:46 by jlimones         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,29 +32,43 @@ Intern	&Intern::operator=(const Intern &copy) {
 
 AForm *Intern::makeForm(std::string &name, std::string &target) {
 
-    bool isName = false;
-    
+    AForm *form = NULL;
+    int nameIndex = -1;
+    std::string nameLower = "";
     std::string nameForms[3] = {
         "shrubbery creation",
         "robotomy request",
         "presidential pardon"
     };
-    std::string nameLower = "";
-    for (int i = 0;i < name.length(); i++) {
+    
+    for (size_t i = 0;i < name.length(); i++) {
         nameLower += tolower(name[i]);
     }
     for (int i = 0;i < 3; i++) {
-        int nameFind = nameLower.find(nameForms[i]);
-        if (nameFind == 0) {
-            isName = true;
+        size_t nameFind = nameLower.find(nameForms[i]);
+        if (nameFind != std::string::npos) {
+            nameIndex = i;
             break ;
         }
     }
 
-
-    
-    std::cout << nameLower << '\n';
-    std::cout << isName << '\n';
-    PresidentialPardonForm a(nameForms[2]);
-    return &a;
+    switch (nameIndex)
+    {
+    case 0:
+        form = new ShrubberyCreationForm(target);
+        std::cout << "Intern creates " << form->getName() << '\n';
+        break;
+    case 1:
+        form = new RobotomyRequestForm(target);
+        std::cout << "Intern creates " << form->getName() << '\n';
+        break;
+    case 2:
+         form = new PresidentialPardonForm(target);
+        std::cout << "Intern creates " << form->getName() << '\n';
+        break;
+    default:
+        std::cout << "Form name not found" << '\n';
+        break;
+    }
+    return form;
 }

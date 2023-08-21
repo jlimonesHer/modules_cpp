@@ -6,7 +6,7 @@
 /*   By: jlimones <jlimones@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 11:55:56 by jlimones          #+#    #+#             */
-/*   Updated: 2023/08/21 18:19:54 by jlimones         ###   ########.fr       */
+/*   Updated: 2023/08/21 19:10:36 by jlimones         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,21 +20,22 @@
 
 int main()
 {   
-    std::string one = "robotomy reqUest";
-    std::string two = "two";
-    std::string three = "three";
-    
-    // ShrubberyCreationForm basic(one);
-    // ShrubberyCreationForm two2(two);
-    // RobotomyRequestForm middle(two);
-    // PresidentialPardonForm pro(three);
+    std::string form1 = "aaaa robotomy reqUest";
+    std::string form2 = "Presidential pardon";
+    std::string form3 = "shrubbddddery creation";
+    std::string target = "three";
 
-    // Bureaucrat president("president", 1);
-    // Bureaucrat executive("executive", 20);
-    // Bureaucrat administrative("administrative", 145);
+    Intern intern;
 
-    Intern i;
-    i.makeForm(one, two);
-    
+    AForm *rrf;
+    AForm *ppf;
+    AForm *scf;
+    rrf = intern.makeForm(form1, target);
+    ppf = intern.makeForm(form2, target);
+    scf = intern.makeForm(form3, target);
+
+    delete rrf;
+    delete ppf;
+    delete scf;
     return 0;
 }
