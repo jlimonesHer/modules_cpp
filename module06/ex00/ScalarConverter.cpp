@@ -6,7 +6,7 @@
 /*   By: jlimones <josec.limones@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 18:36:46 by jlimones          #+#    #+#             */
-/*   Updated: 2023/08/28 10:58:54 by jlimones         ###   ########.fr       */
+/*   Updated: 2023/08/28 11:12:41 by jlimones         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ ScalarConverter::ScalarConverter()
 }
 
 ScalarConverter::ScalarConverter(std::string _str): str(_str), cValue(0),
-    iValue(0), fValue(0), dValue(0), type(-1) {
+    iValue(0), fValue(0), dValue(0), type(INDEF) {
     for (int i = 0;i <= INDEF;i++)
         possible[i] = true;
     parse();
@@ -158,13 +158,14 @@ void ScalarConverter::cast() {
 		if (dValue > std::numeric_limits<float>::max()
 			|| dValue < std::numeric_limits<float>::min())
 			possible[TFLOAT] = false;
-
     }
 }
 
 void ScalarConverter::display() {
-    if (possible[TCHAR] == false || iValue < 32 || iValue > 127) {
-        std::cout << "char: " << "character not printable or does not exist" << std::endl;
+    if (iValue < 32 || iValue > 127) {
+        std::cout << "char: Non displayable" << std::endl;
+    } else if (possible[TCHAR] == false){
+        std::cout << "char: " << "impossible" << std::endl;
     } else if (possible[TINT] == true) {
         std::cout << "char: " << this->cValue << std::endl;
     }
@@ -184,10 +185,11 @@ void ScalarConverter::display() {
     }
     if (possible[TDOUBLE] == true) {
         if (dValue -iValue == 0) {
-        std::cout << "double: " << this->dValue << ".0" << std::endl;
+            std::cout << "double: " << this->dValue << ".0" << std::endl;
+        } else {
+            std::cout << "double: " << this->dValue << std::endl;
+        }
     } else {
-        std::cout << "double: " << this->dValue << std::endl;
-    }
-    } else {std::cout << "double: " << "impossible" << std::endl;
+        std::cout << "double: " << "impossible" << std::endl;
     }
 }
