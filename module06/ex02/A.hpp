@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Serializer.hpp                                     :+:      :+:    :+:   */
+/*   A.hpp                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jlimones <jlimones@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/30 10:19:52 by jlimones          #+#    #+#             */
-/*   Updated: 2023/08/30 18:10:00 by jlimones         ###   ########.fr       */
+/*   Created: 2023/08/30 11:40:53 by jlimones          #+#    #+#             */
+/*   Updated: 2023/08/30 11:41:25 by jlimones         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SERIALIZE_HPP
-#define SERIALIZE_HPP
+#ifndef A_HPP
+#define A_HPP
 
 # include <iostream>
-# include "Data.hpp"
+# include "Base.hpp"
 
-class Serializer
+class A: public Base
 {
     private:
-        Serializer();
 
     public:
-        ~Serializer();
-        Serializer(Serializer const &copy);
-        Serializer	&operator=(Serializer const &copy);
-        static uintptr_t serialize(Data *ptr);
-        static Data *deserialize(uintptr_t raw);
+        A();
+        ~A();
 };
 
 #endif

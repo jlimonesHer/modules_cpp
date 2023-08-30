@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlimones <josec.limones@gmail.com>         +#+  +:+       +#+        */
+/*   By: jlimones <jlimones@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 18:55:25 by jlimones          #+#    #+#             */
-/*   Updated: 2023/08/28 11:13:44 by jlimones         ###   ########.fr       */
+/*   Updated: 2023/08/30 19:17:31 by jlimones         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,24 +24,24 @@
 class ScalarConverter
 {
     private:
-        std::string str;
-        bool possible[4];
-        char    cValue;
-        int     iValue;
-        float   fValue;
-        double  dValue;
-        int     type;
-    public:
+        static std::string str;
+        static bool possible[4];
+        static char    cValue;
+        static int     iValue;
+        static float   fValue;
+        static double  dValue;
+        static int     type;
         ScalarConverter();
-        ScalarConverter(std::string _str);
+    public:
         ~ScalarConverter();
         ScalarConverter(ScalarConverter const &copy);
         ScalarConverter	&operator=(ScalarConverter const &copy);
-        int parserChars( void );
-        void parserDigit( void );
-        void parse( void );
-        void cast( void );
-        void display(void);
+        static int parserChars( std::string &str );
+        static void parserDigit( std::string &str );
+        static void parse( std::string &str );
+        static void cast( void );
+        static void display( void );
+        static void convert(std::string str);
 };
 
 #endif

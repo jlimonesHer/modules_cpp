@@ -3,28 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlimones <josec.limones@gmail.com>         +#+  +:+       +#+        */
+/*   By: jlimones <jlimones@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 18:36:46 by jlimones          #+#    #+#             */
-/*   Updated: 2023/08/28 11:12:41 by jlimones         ###   ########.fr       */
+/*   Updated: 2023/08/30 19:31:14 by jlimones         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
 
-
-ScalarConverter::ScalarConverter()
-{
-}
-
-ScalarConverter::ScalarConverter(std::string _str): str(_str), cValue(0),
-    iValue(0), fValue(0), dValue(0), type(INDEF) {
-    for (int i = 0;i <= INDEF;i++)
-        possible[i] = true;
-    parse();
-    cast();
-    display();
-}
+char ScalarConverter::cValue = 0;
+int ScalarConverter::iValue = 0;
+float ScalarConverter::fValue = 0;
+double ScalarConverter::dValue = 0.0;
+int ScalarConverter::type = 4;
+bool ScalarConverter::possible[4] = {true, true, true, true};
 
 ScalarConverter::~ScalarConverter() {
 }
@@ -41,34 +34,34 @@ ScalarConverter	&ScalarConverter::operator=(const ScalarConverter &copy)
     return *this;
 }
 
-int ScalarConverter::parserChars( void ) {
+int ScalarConverter::parserChars( std::string &str ) {
     int len = str.length();
     
-    if ((len == 1 && !std::isdigit(str[0])) || (len == 3 && str[0] == '\'' &&
-         str[2] == '\'')) {
+    if ((len == 1 && !std::isdigit(str[0]))) {
         type = TCHAR;
         possible[0] = true;
         cValue = str[0];
     } else if (str == "-inff" || str == "+inff" || str == "nanf") {
-        type = 2;
+        type = TFLOAT;
 		fValue = std::atof(str.c_str());
         dValue = fValue;
+        possible[TINT] = false;
 		possible[TFLOAT] = true;
         possible[TDOUBLE] = true;
     } else if (str == "-inf" || str == "+inf" || str == "nan") {
-        type = 2;
+        type = TDOUBLE;
 		fValue = std::atof(str.c_str());
         dValue = fValue;
+        possible[TINT] = false;
 		possible[TFLOAT] = true;
         possible[TDOUBLE] = true;
     }
     else
         return 0;
-    display();
     return 1;
 }
 
-void ScalarConverter::parserDigit( void ) {
+void ScalarConverter::parserDigit( std::string &str ) {
     int len = str.length();
     int i= 0;
     type = TINT;
@@ -79,7 +72,6 @@ void ScalarConverter::parserDigit( void ) {
         if (str[i] == '.' && type == TINT) {
             type = TDOUBLE;
             i++;
-
         }
         if (str[i] == 'f' && i == len - 1 && type == TDOUBLE) {
             type = TFLOAT;
@@ -99,24 +91,27 @@ void ScalarConverter::parserDigit( void ) {
     }
 }
 
-void ScalarConverter::parse( void ) {
-    if (parserChars())
+void ScalarConverter::parse( std::string &str ) {
+    if (parserChars(str))
         return ;
-    parserDigit();
+    parserDigit(str);
     if (type == TINT)
     {
-        long tmpI = std::atol(str.c_str());
-        if (tmpI > std::numeric_limits<int>::max() || 
-            tmpI < std::numeric_limits<int>::min()) {
+        long long tmpI = std::atol(str.c_str());
+        if (str.length() > 10 ||
+            (tmpI > std::numeric_limits<int>::max() || 
+            tmpI < std::numeric_limits<int>::lowest())) {
                 possible[TINT] = false;
+                dValue = std::atof(str.c_str());
         } else {
             iValue = tmpI;
         }
     } else if (type == TFLOAT) {
         double tmpD = std::atof(str.c_str());
         if (tmpD > std::numeric_limits<float>::max()
-			|| tmpD < std::numeric_limits<float>::min()) {
+			|| tmpD < std::numeric_limits<float>::lowest()) {
 			possible[TFLOAT] = false;
+            dValue = std::atof(str.c_str());
         } else {
             fValue = tmpD;
         }
@@ -138,58 +133,66 @@ void ScalarConverter::cast() {
         dValue = static_cast<double>(cValue);
     } else if (type == TINT) {
         cValue = static_cast<char>(iValue);
-		fValue = static_cast<float>(iValue);
-		dValue = static_cast<double>(iValue);
+		fValue = static_cast<float>(possible[TINT] ? iValue : dValue);
+		dValue = static_cast<double>(possible[TINT] ? iValue : dValue);
+		if (dValue > std::numeric_limits<int>::max()
+			|| dValue < std::numeric_limits<int>::lowest()) {
+                possible[TINT] = false;
+                possible[TFLOAT] = false;
+                possible[TDOUBLE] = false;
+            }
     } else if (type == TFLOAT) {
     	cValue = static_cast<char>(fValue);
-		iValue = static_cast<int>(fValue);
-		if (fValue > std::numeric_limits<int>::max()
-			|| fValue < std::numeric_limits<int>::min()) {
-			possible[TINT] = false;
-        }
-		dValue = static_cast<double>(fValue);
+		iValue = static_cast<int>(possible[TFLOAT] ? fValue : dValue);
+		dValue = static_cast<double>(possible[TFLOAT] ? fValue : dValue);
     } else if (type == TDOUBLE) {
         cValue = static_cast<char>(dValue);
 		iValue = static_cast<int>(dValue);
 		if (dValue > std::numeric_limits<int>::max()
-			|| dValue < std::numeric_limits<int>::min())
+			|| dValue < std::numeric_limits<int>::lowest())
 			possible[TINT] = false;
 		fValue = static_cast<float>(dValue);
 		if (dValue > std::numeric_limits<float>::max()
-			|| dValue < std::numeric_limits<float>::min())
+			|| dValue < std::numeric_limits<float>::lowest())
 			possible[TFLOAT] = false;
     }
 }
 
-void ScalarConverter::display() {
-    if (iValue < 32 || iValue > 127) {
+void ScalarConverter::display( void ) {
+    if (possible[TCHAR] == false) {
         std::cout << "char: Non displayable" << std::endl;
-    } else if (possible[TCHAR] == false){
+    } else if (iValue < 32 || iValue > 127){
         std::cout << "char: " << "impossible" << std::endl;
     } else if (possible[TINT] == true) {
-        std::cout << "char: " << this->cValue << std::endl;
+        std::cout << "char: " << cValue << std::endl;
     }
     if (possible[TINT] == true) {
-        std::cout << "int: " << this->iValue << std::endl;
+        std::cout << "int: " << iValue << std::endl;
     } else {
         std::cout << "int: " << "impossible"  << std::endl;
     }
     if (possible[TFLOAT] == true) {
-        if (fValue - iValue == 0) {
-        std::cout << "float: " << this->fValue << ".0" << "f" << std::endl;
+        if (std::abs(dValue - iValue) < 0.0001) {
+        std::cout << "float: " << fValue << ".0" << "f" << std::endl;
         } else {
-        std::cout << "float: " << this->fValue << "f" << std::endl;
+        std::cout << "float: " << fValue << "f" << std::endl;
         }
     } else {
         std::cout << "float: " << "impossible"  << std::endl;
     }
     if (possible[TDOUBLE] == true) {
-        if (dValue -iValue == 0) {
-            std::cout << "double: " << this->dValue << ".0" << std::endl;
+        if (std::abs(dValue - iValue) < 0.0001) {
+            std::cout << "double: " << dValue << ".0" << std::endl;
         } else {
-            std::cout << "double: " << this->dValue << std::endl;
+            std::cout << "double: " << dValue << std::endl;
         }
     } else {
         std::cout << "double: " << "impossible" << std::endl;
     }
+}
+
+void ScalarConverter::convert(std::string str) {
+    parse(str);
+    cast();
+    display();
 }
