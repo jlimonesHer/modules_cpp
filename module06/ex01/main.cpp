@@ -3,24 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlimones <josec.limones@gmail.com>         +#+  +:+       +#+        */
+/*   By: jlimones <jlimones@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 11:15:30 by jlimones          #+#    #+#             */
-/*   Updated: 2023/08/29 20:01:37 by jlimones         ###   ########.fr       */
+/*   Updated: 2023/08/30 11:04:11 by jlimones         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Data.hpp"
+#include "Serializer.hpp"
 
 int main ( void ) {
     Data a(25);
     uintptr_t b;
     Data *c;
     
-    b = serialize(&a);
-    c = deserialize(b);
-    std::cout << "Address a = " << &a << " value = " << a.getValue() << std::endl;
-    std::cout << "Address b = " << &b << " value = " << b << std::endl;
-    std::cout << "Address c = " << c << " value = " << c->getValue() << std::endl;
+    std::cout << "Original Data pointer: " << &a << " value = " << a.getValue() << std::endl;
+    b = Serializer::serialize(&a);
+    std::cout << "Serialize value: " << b << std::endl;
+    c = Serializer::deserialize(b);
+    std::cout << "Data pointer after deserialize: " << c << " value = " << c->getValue() << std::endl;
 
 }

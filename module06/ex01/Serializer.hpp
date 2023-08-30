@@ -1,39 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Data.cpp                                           :+:      :+:    :+:   */
+/*   Serializer.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jlimones <jlimones@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/29 19:10:43 by jlimones          #+#    #+#             */
-/*   Updated: 2023/08/30 10:34:57 by jlimones         ###   ########.fr       */
+/*   Created: 2023/08/30 10:19:52 by jlimones          #+#    #+#             */
+/*   Updated: 2023/08/30 10:38:47 by jlimones         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Data.hpp"
+#ifndef SERIALIZE_HPP
+#define SERIALIZE_HPP
 
-Data::Data(): value(0) {
-}
+# include <iostream>
+# include "Data.hpp"
 
-Data::Data(int _value): value(_value) {
-}
-
-Data::~Data()
+class Serializer
 {
-}
+    private:
 
-Data::Data(Data const &copy)
-{
-    *this = copy;
-}
+    public:
+        Serializer();
+        ~Serializer();
+        Serializer(Serializer const &copy);
+        Serializer	&operator=(Serializer const &copy);
+        static uintptr_t serialize(Data *ptr);
+        static Data *deserialize(uintptr_t raw);
+};
 
-Data	&Data::operator=(const Data &copy) {
-    if (this != &copy) {
-        *this = copy;
-    }
-    return *this;
-}
-
-int Data::getValue( void ) const {
-    return (this->value);
-}
+#endif

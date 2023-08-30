@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jlimones <josec.limones@gmail.com>         +#+  +:+       +#+         #
+#    By: jlimones <jlimones@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/20 16:58:00 by jlimones          #+#    #+#              #
-#    Updated: 2023/08/29 19:10:30 by jlimones         ###   ########.fr        #
+#    Updated: 2023/08/30 10:44:30 by jlimones         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,9 +15,10 @@ CC = c++
 CFLAGS = -Wall -Werror -Wextra -std=c++98
 SRC =   main.cpp \
 		Data.cpp \
+		Serializer.cpp \
 
 AUTHOR = jlimones
-DATE = 8/06/2023
+DATE = 28/08/2023
 
 COM_COLOR   = \033[0;34m
 OBJ_COLOR   = \033[0;36m

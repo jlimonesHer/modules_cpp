@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Data.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlimones <josec.limones@gmail.com>         +#+  +:+       +#+        */
+/*   By: jlimones <jlimones@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 19:11:01 by jlimones          #+#    #+#             */
-/*   Updated: 2023/08/29 19:43:37 by jlimones         ###   ########.fr       */
+/*   Updated: 2023/08/30 10:38:54 by jlimones         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,7 @@ class Data
         ~Data();
         Data(Data const &copy);
         Data	&operator=(Data const &copy);
-
         int getValue( void ) const;
 };
-
-uintptr_t serialize(Data *ptr);
-Data *deserialize(uintptr_t raw);
 
 #endif
