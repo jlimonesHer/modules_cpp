@@ -4,8 +4,8 @@
 #define MAX_VAL 750
 int main(int, char**)
 {
-    Array<int> numbers(MAX_VAL);
-    int* mirror = new int[MAX_VAL];
+    Array<long long int> numbers(MAX_VAL);
+    long long int* mirror = new long long int[MAX_VAL];
     srand(time(NULL));
     for (int i = 0; i < MAX_VAL; i++)
     {
@@ -15,8 +15,8 @@ int main(int, char**)
     }
     //SCOPE
     {
-        Array<int> tmp = numbers;
-        Array<int> test(tmp);
+        Array<long long int> tmp = numbers;
+        Array<long long int> test(tmp);
     }
 
     for (int i = 0; i < MAX_VAL; i++)
