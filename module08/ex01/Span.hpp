@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   span.hpp                                           :+:      :+:    :+:   */
+/*   Span.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlimones <josec.limones@gmail.com>         +#+  +:+       +#+        */
+/*   By: jlimones <jlimones@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 20:20:52 by jlimones          #+#    #+#             */
-/*   Updated: 2023/09/07 21:35:19 by jlimones         ###   ########.fr       */
+/*   Updated: 2023/09/08 13:04:28 by jlimones         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,30 @@
 #define SPAN_HPP
 
 # include <iostream>
+# include <set>
 # include <vector>
-
-//Next, implement two member functions: shortestSpan() and longestSpan()
 
 class Span
 {
     private:
-        unsigned int n;
-        unsigned int numberAdded;
-        std::vector<int> lst;
+        unsigned int N;
+        std::set<int> lst;
         Span();
     public:
         Span( int );
         ~Span();
         Span(Span const &copy);
         Span	&operator=(Span const &copy);
+        
+        unsigned int longestSpan( void );
+        unsigned int shortestSpan( void );
         void addNumber( int );
+        void generateContainer( void );
+        
         unsigned int getN(void);
-        unsigned int getLst(int);
+        void print();
+
+        
         class missingNumbers;
         class vectorCompleted;
 };

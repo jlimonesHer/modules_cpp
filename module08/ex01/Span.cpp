@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   span.cpp                                           :+:      :+:    :+:   */
+/*   Span.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlimones <josec.limones@gmail.com>         +#+  +:+       +#+        */
+/*   By: jlimones <jlimones@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 20:21:13 by jlimones          #+#    #+#             */
-/*   Updated: 2023/09/07 21:37:50 by jlimones         ###   ########.fr       */
+/*   Updated: 2023/09/08 14:31:55 by jlimones         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ class Span::vectorCompleted: public std::exception
     }
 };
 
-Span::Span(int _n): n(_n), numberAdded(0)
+Span::Span(int _n): N(_n)
 {
 }
 
@@ -41,28 +41,55 @@ Span::Span(Span const &copy)
 
 Span	&Span::operator=(const Span &copy)
 {
-    n = copy.n;
-    numberAdded = copy.numberAdded;
-    for (unsigned int i = 0;i < n;i++) {
-        lst[i] = copy.lst[i];
-    }
+    N = copy.N;
+    lst = std::set<int>(copy.lst);
     return (*this);
 }
 
 void Span::addNumber(int numberToAdd) 
 {
-    if (numberAdded <= n) {
-        lst.push_back(numberToAdd);
-        numberAdded++;
+    if (lst.size() < N) {
+        lst.insert(numberToAdd);
         return ;
     }
-    //throw()
+    throw vectorCompleted();
+}
+
+unsigned int Span::longestSpan( void ) {
+    std::vector<int> container(lst.begin(), lst.end());
+    if (container.size() < 2)
+        throw missingNumbers();
+    std::cout << container[container.size() - 1] - container[0] << std::endl;
+    return (container[container.size() - 1] - container[0]);
+}
+
+unsigned int Span::shortestSpan( void ) {
+    std::vector<int> container(lst.begin(), lst.end());
+    if (container.size() < 2)
+        throw missingNumbers();
+    int difference = container[container.size() - 1] - container[0];
+    for (unsigned int i = 1;i < container.size();i++) {
+        if (container[i] -  container[i - 1] < difference) {
+            difference = container[i] -  container[i - 1];
+        }
+    }
+    std::cout << difference << std::endl;
+
+    return N;
+}
+
+void Span::generateContainer( void ) {
+    
 }
 
 unsigned int Span::getN( void ) {
-    return n;
+    return N;
 }
 
-unsigned int Span::getLst(int index) {
-    return lst[index];
+void Span::print() {
+    std::set<int>::iterator iter;
+    for (iter = lst.begin(); iter != lst.end(); iter++) {
+        std::cout << *iter << ", ";
+    }
+    std::cout << std::endl;
 }

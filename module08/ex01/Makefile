@@ -3,14 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jlimones <josec.limones@gmail.com>         +#+  +:+       +#+         #
+#    By: jlimones <jlimones@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/20 16:58:00 by jlimones          #+#    #+#              #
-#    Updated: 2023/09/07 20:22:54 by jlimones         ###   ########.fr        #
+#    Updated: 2023/09/08 14:32:29 by jlimones         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = Easyfind
+NAME = ex01
 CC = c++
 CFLAGS = -Wall -Werror -Wextra -std=c++98
 SRC =   main.cpp \
