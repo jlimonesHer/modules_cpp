@@ -6,21 +6,22 @@
 /*   By: jlimones <jlimones@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 10:50:29 by jlimones          #+#    #+#             */
-/*   Updated: 2023/09/09 19:44:53 by jlimones         ###   ########.fr       */
+/*   Updated: 2023/09/09 20:53:19 by jlimones         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
 
 int main(int argc, char *argv[]) {
-    std::string date = "2021-12-12";
+    std::string input = argv[1];
+    //std::cout << input << "\n";
     if (argc != 2) {
         std::cout << "Error: could not open file." << std::endl;
         return 1;
     }
     BitcoinExchange a(argv[1]);
     a.readDatabase();
-    a.parserDate(date);
+    a.readInput(input);
     return 0;
 }
 

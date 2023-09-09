@@ -6,7 +6,7 @@
 /*   By: jlimones <jlimones@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 10:51:57 by jlimones          #+#    #+#             */
-/*   Updated: 2023/09/09 19:42:13 by jlimones         ###   ########.fr       */
+/*   Updated: 2023/09/09 20:59:11 by jlimones         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,32 @@ void BitcoinExchange::readDatabase( void ) {
     }
 }
 
+/////*/*/*/*/*/*//*/*/*/*/****/
+void BitcoinExchange::readInput(std::string& input) {
+    std::ifstream   file(input);
+    std::string  headerInput;
+    
+    if (!file.is_open())
+        throw fileNotFoundException();
+    std::getline(file, headerInput);
+    for (std::string date; std::getline(file, date, '|'); ) {
+        std::string valueSpace;
+        std::string value;
+        std::getline(file, valueSpace);
+        for (size_t i = 0; i < valueSpace.length(); i++) {
+            if (valueSpace[i] != ' ') {
+                value += valueSpace[i];
+            }
+    }
+        std::cout << "value:" << value << std::endl;
+        saveInput(date, value);
+    }
+}
+
 std::time_t BitcoinExchange::convertTime_t(std::string& date) {
     struct tm   tm;
 
+    this->parserDate(date);
     memset(&tm, 0, sizeof(tm));
     strptime(date.c_str(), "%Y-%m-%d", &tm);
     return (mktime(&tm));
@@ -77,25 +100,34 @@ void BitcoinExchange::saveData(std::string& date, std::string& value) {
     //std::cout << "Date: " << dateDatabase << ", value: " << dateValue[dateDatabase] << std::endl;
 }
 
+void BitcoinExchange::saveInput(std::string& date, std::string& value) {
+    
+    std::time_t dateInput = convertTime_t(date);
+    float       valueInput = std::atof(value.c_str());
+
+    dateValue[dateInput] = valueInput;
+    std::cout << "Date: " << dateInput << ", value: " << inputValue[dateInput] << std::endl;
+}
+
 void BitcoinExchange::parserDate(std::string& date) {
     std::string year;
     std::string month;
     std::string day;
-    std::cout << date << std::endl;
+
     try
     {
-    for (int i = 0;i < YEAR;i++) {
-        if (!isdigit(date[i]))
+        for (int i = 0;i < INDEXYEAR;i++) {
+            if (!isdigit(date[i]))
+                throw dateNotValid();
+            year += date[i];
+        }
+        if (!isdigit(date[INDEXMONTH - 1]) || !isdigit(date[INDEXMONTH]) ||
+            !isdigit(date[INDEXDAY - 1]) || !isdigit(date[INDEXDAY]))
             throw dateNotValid();
-        year += date[i];
-    }
-    month += date[MONTH - 1];
-    month += date[MONTH];
-    day += date[DAY - 1];
-    day += date[DAY];
-    std::cout << year << std::endl;
-    std::cout << month << std::endl;
-    std::cout << day << std::endl;
+        month += date[INDEXMONTH - 1];
+        month += date[INDEXMONTH];
+        day += date[INDEXDAY - 1];
+        day += date[INDEXDAY];
    
         parserYear(year);
         parserMonth(month);
