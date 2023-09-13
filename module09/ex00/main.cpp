@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlimones <jlimones@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jlimones <josec.limones@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 10:50:29 by jlimones          #+#    #+#             */
-/*   Updated: 2023/09/09 20:53:19 by jlimones         ###   ########.fr       */
+/*   Updated: 2023/09/10 13:28:22 by jlimones         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,14 @@ int main(int argc, char *argv[]) {
         return 1;
     }
     BitcoinExchange a(argv[1]);
+    try {
     a.readDatabase();
     a.readInput(input);
+
+    } catch(std::exception& e){
+                std::cerr << e.what() << '\n';
+
+    }
     return 0;
 }
 
