@@ -6,7 +6,7 @@
 /*   By: jlimones <josec.limones@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 11:10:18 by jlimones          #+#    #+#             */
-/*   Updated: 2023/09/14 10:43:04 by jlimones         ###   ########.fr       */
+/*   Updated: 2023/09/14 12:32:59 by jlimones         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,7 @@ class RPN
         RPN(RPN const &copy);
         RPN	&operator=(RPN const &copy);
 
-        void insertNumber(std::string);
-        bool isInputValid(std::string);
+        bool parserInput(std::string);
         bool saveInput(std::string);
 };
 

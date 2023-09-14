@@ -6,7 +6,7 @@
 /*   By: jlimones <josec.limones@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 10:54:19 by jlimones          #+#    #+#             */
-/*   Updated: 2023/09/14 10:46:25 by jlimones         ###   ########.fr       */
+/*   Updated: 2023/09/14 12:32:49 by jlimones         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int main (int argc, char *argv[]) {
         return 1;
     }
     RPN a;
-    a.insertNumber(argv[1]);
+    a.parserInput(argv[1]);
     
     return (0);
 }
