@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   RPN.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlimones <josec.limones@gmail.com>         +#+  +:+       +#+        */
+/*   By: jlimones <jlimones@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 11:31:53 by jlimones          #+#    #+#             */
-/*   Updated: 2023/09/14 12:35:22 by jlimones         ###   ########.fr       */
+/*   Updated: 2023/09/14 17:59:22 by jlimones         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,49 +31,56 @@ RPN	&RPN::operator=(const RPN &copy)
     return *this;
 }
 
-static std::string removeSpace(std::string input) {
-    std::string inputWithoutSpaces;
-
-    for(size_t i = 0;i < input.length();i++) {
-        if (input[i] == ' ') {
-            break ;
-        }
-        else {
-            inputWithoutSpaces += input[i];
-        }
-    }
-    return (inputWithoutSpaces);
-}
-
 static bool isOperands(char c) {
     if (c == '+' || c == '-' || c == '*' || c == '/')
         return 1;
     return 0;
 }
 
-bool RPN::parserInput(std::string input) {
-    std::string inputWithoutSpaces;
-    //std::cout << input << std::endl;
-    inputWithoutSpaces = removeSpace(input);
-    for (size_t i = 0;i < inputWithoutSpaces.length();i++) {
-        if (!isdigit(inputWithoutSpaces[i]) && !isOperands(inputWithoutSpaces[i]))
-            return 0;
-        else if (isdigit(inputWithoutSpaces[i])) {
-            operands.push(std::atoi(inputWithoutSpaces.c_str()));
-        } else if (isOperands(inputWithoutSpaces[i]))
-            operands.push(std::atoi(inputWithoutSpaces.c_str()));
+static int calculator(int a, int b, char operand) {
+    int result = 0;
+    
+    if (operand == '+') {
+        result = a + b;    
+    } else if (operand == '-') {
+        result = a - b;
+    } else if (operand == '*') {
+        result = a * b;
+    } else if (operand == '/') {
+        result = a / b;
     }
-        while (!operands.empty()) {
-        int elemento = operands.top(); // Obtener el elemento en la parte superior
-        std::cout << elemento << " "; // Procesar el elemento (en este caso, imprimirlo)
-        operands.pop(); // Eliminar el elemento en la parte superior de la pila
-    }
-    return 1;
+    return result;
 }
 
-bool RPN::saveInput(std::string input) {
-    if (!parserInput(input)) {
-        return 0;
+void RPN::parserInput(std::string input) {
+    int a = 0;
+    int b = 0;
+    for (size_t i = 0; input[i]; i++) {
+        if (!isdigit(input[i]) && !isOperands(input[i]) && !isspace(input[i])) {
+            std::cout << "Error\n";
+            return ;
+        }
+        if (isdigit(input[i])) {
+            operands.push(input[i] - 48);
+        }
+        if (isOperands(input[i])) {
+            if (operands.size() > 1) {
+                b = operands.top();
+                operands.pop();   
+                a = operands.top();
+                operands.pop();
+                operands.push(calculator(a, b, input[i]));
+            } else {
+                std::cout << "Not enough numbers\n";
+                return ;
+            }
+        } 
     }
-    return 1;
+    if (operands.size() != 1) {
+        std::cout << "Invalid operation\n";
+        return ;
+    } else {
+        std::cout << operands.top() << "\n";
+        
+    }
 }

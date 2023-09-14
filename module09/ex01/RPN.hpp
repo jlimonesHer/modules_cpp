@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   RPN.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlimones <josec.limones@gmail.com>         +#+  +:+       +#+        */
+/*   By: jlimones <jlimones@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 11:10:18 by jlimones          #+#    #+#             */
-/*   Updated: 2023/09/14 12:32:59 by jlimones         ###   ########.fr       */
+/*   Updated: 2023/09/14 17:57:54 by jlimones         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ class RPN
         RPN(RPN const &copy);
         RPN	&operator=(RPN const &copy);
 
-        bool parserInput(std::string);
+        void parserInput(std::string);
         bool saveInput(std::string);
 };
 
